@@ -34,6 +34,10 @@ class Timestb_TesterGUI:
 		Bt2 = Button(parent, text = "Next", command = self.next)
 		Bt2.grid(row = 1, column = 1, sticky = SE, padx = 40)
 
+	def next(self):
+		check1 = Check()
+		self.question_label.configure(text = f"{str(check1.randnum)} * {str(check1.randnum1)}")
+
 #main routine
 if __name__ == "__main__": 
 	root = Tk()
