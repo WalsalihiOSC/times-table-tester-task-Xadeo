@@ -11,10 +11,14 @@ class Timestable:
 	
 	def vaildate(self, inputanswer):
 		"""Checks if the input is valid"""
-		if int(inputanswer) == int(self.answer):
-			return str(inputanswer) + " is correct."
-		else:
-			return str(inputanswer) + " is no correct."
+		try:
+			inputanswer = float(inputanswer)
+			if int(inputanswer) == int(self.answer):
+				return str(inputanswer) + " is correct."
+			else:
+				return str(inputanswer) + " is no correct."
+		except ValueError:
+			return str(inputanswer) + " is not a vaild input."
 
 class Timestb_TesterGUI:
 	def __init__(self, parent):
@@ -29,10 +33,10 @@ class Timestb_TesterGUI:
 		self.entrypoint.grid(row = 0, column = 1)
 
 		Bt1 = Button(parent, text = "Check Answer", command = self.check_answer)
-		Bt1.grid(row = 1, column = 0, sticky = SW, padx = 40)
+		Bt1.grid(row = 1, column = 0, padx = 40)
 
 		Bt2 = Button(parent, text = "Next", command = self.next)
-		Bt2.grid(row = 1, column = 1, sticky = SE, padx = 40)
+		Bt2.grid(row = 1, column = 1, padx = 40)
 
 		self.outputlabel = Label(parent, text = "", font = ("Comic Sans MS", "10", "bold"))
 		self.outputlabel.grid(row = 2, columnspan = 2)
