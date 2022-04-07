@@ -2,11 +2,11 @@
 from  tkinter import *
 import random
 
-class Check:
+class Timestable:
 	def __init__(self):
 		""" Import random - pick two random nums"""
-		self.randnum = (random.randint(1,20))
-		self.randnum1 = (random.randint(1,20))
+		self.randnum = (random.randint(1,10))
+		self.randnum1 = (random.randint(1,10))
 		self.answer = self.randnum * self.randnum1
 	
 	def vaildate(self, inputanswer):
@@ -19,9 +19,10 @@ class Check:
 class Timestb_TesterGUI:
 	def __init__(self, parent):
 
-		self.check = Check()
+		""" Interface """
+		self.questions = Timestable()
 
-		self.question_label = Label(parent, text = f"{str(self.check.randnum)} * {str(self.check.randnum1)}")
+		self.question_label = Label(parent, text = f"{str(self.questions.randnum)} * {str(self.questions.randnum1)}")
 		self.question_label.grid(row = 0, column = 0)
 
 		self.entrypoint = Entry(parent, width = 5)
@@ -37,11 +38,12 @@ class Timestb_TesterGUI:
 		self.outputlabel.grid(row = 2, columnspan = 2)
 
 	def next(self):
-		check1 = Check()
-		self.question_label.configure(text = f"{str(check1.randnum)} * {str(check1.randnum1)}")
+		self.questions = Timestable()
+		self.question_label.configure(text = f"{str(self.questions.randnum)} * {str(self.questions.randnum1)}")
+		self.entrypoint.delete(0, END)
 
 	def check_answer(self):
-		self.outputlabel.configure(text = self.check.vaildate(self.entrypoint.get()))
+		self.outputlabel.configure(text = self.questions.vaildate(self.entrypoint.get()))
 #main routine
 if __name__ == "__main__": 
 	root = Tk()
