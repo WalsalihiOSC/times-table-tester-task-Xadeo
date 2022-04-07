@@ -1,5 +1,19 @@
 
 from  tkinter import *
+import random
+
+class Check:
+	def __init__(self):
+		self.randnum = (random.randint(1,20))
+		self.randnum1 = (random.randint(1,20))
+		self.answer = self.randnum * self.randnum1
+	
+	def check(self, inputanswer):
+		"""Checks if the input is valid"""
+		if int(inputanswer) == self.answer:
+			return inputanswer + "is correct."
+		else:
+			return inputanswer + "is no correct"
 
 class Timestb_TesterGUI:
 	def __init__(self, parent):
@@ -16,6 +30,7 @@ class Timestb_TesterGUI:
 
 		Bt2 = Button(parent, text = "Next")
 		Bt2.grid(row = 1, column = 1, padx = 10)
+		
 
 #main routine
 if __name__ == "__main__": 
